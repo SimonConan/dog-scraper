@@ -26,8 +26,19 @@ async function getBreedImg(page) {
     return breedImg;
 }
 
+async function getNote(page, selector) {
+    const note = await page.evaluate((selector) => {
+        // We get all the gray note and we substract it to the MAX
+        let value = document.querySelector(selector).querySelectorAll('.gray');
+        return 5 - value.length;
+    }, selector);
+
+    return note;
+}
+
 module.exports = {
     getBreedLinks,
     getTextContent,
-    getBreedImg
+    getBreedImg,
+    getNote
 };
