@@ -30,8 +30,5 @@ RUN addgroup -S pptruser && adduser -S -g pptruser pptruser \
     && chown -R pptruser:pptruser /home/pptruser \
     && chown -R pptruser:pptruser /var
 
-# Run everything after as non-privileged user.
-USER pptruser
-
 WORKDIR /var/scraper
 RUN make dev
