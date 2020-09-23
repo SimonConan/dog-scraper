@@ -1,0 +1,11 @@
+version: '2.3'
+
+services:
+  node:
+    build: .
+    container_name: dog-scraper
+    restart: always
+    tty: true
+    volumes:
+      - ./:/var/scraper 
+      - /var/scraper/node_modules
