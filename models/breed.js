@@ -24,49 +24,133 @@ const breedSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    behavior: {
-        type: Number,
-        required: true
+    behavior : {
+        type: [{
+            affectionate: {
+                type: Number,
+                required: true
+            },
+            calm: {
+                type: Number,
+                required: true
+            },
+            protective: {
+                type: Number,
+                required: true
+            },
+            independent: {
+                type: Number,
+                required: true
+            },
+            hunter: {
+                type: Number,
+                required: true
+            },
+            bark: {
+                type: Number,
+                required: true
+            }
+        }]
     },
-    behaviorOther: {
-        type: Number,
-        required: true
+    behaviorWithOthers : {
+        type: [{
+            withChildren: {
+                type: Number,
+                required: true
+            },
+            withAnimals: {
+                type: Number,
+                required: true
+            },
+            withStrangers: {
+                type: Number,
+                required: true
+            },
+        }]
     },
-    education: {
-        type: Number,
-        required: true
+    education : {
+       type: [{
+            clever: {
+                type: Number,
+                required: true
+            },
+            obedient: {
+                type: Number,
+                required: true
+            },
+        }]
     },
-    lifeConditions: {
-        type: Number,
-        required: true
+    livingConditions : {
+        type: [{
+            apartment: {
+                type: Number,
+                required: true
+            },
+            newMasters: {
+                type: Number,
+                required: true
+            },
+            loveHot: {
+                type: Number,
+                required: true
+            },
+            loveCold: {
+                type: Number,
+                required: true
+            },
+        }]
     },
     health: {
-        type: Number,
-        required: true
-    },
-    lifespan: {
-        type: Number,
-        required: true
+        type: [{ 
+            goodHealth: {
+                type: Number,
+                required: true
+            },
+            easeToGainWeight: {
+                type: Number,
+                required: true
+            },
+        }]
     },
     maintenance: {
-        type: Number,
-        required: true
-    },
-    price: {
-        type: Number,
-        required: true
-    },
-    maintenancePrice: {
-        type: Number,
-        required: true
+        type: [{
+            easeOfMaintenance: {
+                type: Number,
+                required: true
+            },
+            costOfMaintenance: {
+                type: Number,
+                required: true
+            },    
+            hairLoss: {
+                type: String,
+                required: true
+            },
+            droolLevel: {
+                type: Number,
+                required: true
+            },
+            easeOfGrooming: {
+                type: Number,
+                required: true
+            },
+        }]
     },
     physicalActivity: {
-        type: Number,
-        required: true
-    },
-    masterCharacter: {
-        type: String,
-        required: true
+        type: [{
+            athletic: {
+                type: Number,
+                required: true
+            },
+            energyLevel: {
+                type: Number,
+                required: true
+            },
+            enjoyToPlay: {
+                type: Number,
+                required: true
+            }
+        }]
     }
 });
 
