@@ -16,5 +16,5 @@ cp .env.sample .env
 
 ```bash
 docker exec -it dog-scraper sh
-node crawler/crawler.js
+node crawler.js
 ```
