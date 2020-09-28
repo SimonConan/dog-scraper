@@ -21,7 +21,7 @@ async function saveBreedData(breedData) {
         .catch(err => { throw new Error('MongoDB connection error: ' + err); });
 
     await breedData.save()
-        .catch(err => { throw new Error('Error when saving : ' + breedData.nameId + ' ' + err); });
+        .catch(err => { throw new Error('Warning when saving : ' + breedData.nameId + ' ' + err); });
 }
 
 module.exports = {

@@ -23,15 +23,20 @@ const breedCtrl = require('./controllers/breed');
 	// Go through all the links and get the data
 	for (let i = 0, length = breedLinks.length; i < length; i++) {
 
-		// Get all data on the current breed
-		console.log('######\nGetting all data on breed num ' + i);
-		let currentBreedData = await dUtils.getAllData(page, breedLinks[i]);
-		console.log('All data on ' + currentBreedData.name + ' get');
-
-		// When all the data are get, save them
-		console.log('Saving ' + currentBreedData.name);
-		await breedCtrl.saveBreedData(currentBreedData);
-		console.log(currentBreedData.name + ' saved\n######\n');
+		try {
+			// Get all data on the current breed
+			console.log('\n######\nGetting all data on breed num ' + i);
+			let currentBreedData = await dUtils.getAllData(page, breedLinks[i]);
+			console.log(currentBreedData.name + ' data get');
+			
+			// When all the data are get, save them
+			console.log('Saving ' + currentBreedData.name);
+			await breedCtrl.saveBreedData(currentBreedData);
+			console.log(currentBreedData.name + ' saved\n######\n');
+		} catch (error) {
+			console.log(error);
+			continue;
+		}
 
 	}
 

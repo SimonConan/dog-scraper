@@ -43,7 +43,7 @@ async function getTextAsNumber(page, selector) {
     try {
         let content = await page.evaluate((selector) => {
             let value = document.querySelector(selector);
-            return value.textContent;
+            return (!value) ? value = -1 : value.textContent;
         }, selector);
 
         return (content === 'NC') ? content = -1 : content = parseInt(content);
@@ -78,8 +78,8 @@ async function getNote(page, selector) {
     try {
         const note = await page.evaluate((selector) => {
             // We get all the gray note and we substract it to the MAX
-            let value = document.querySelector(selector).querySelectorAll('.gray');
-            return 5 - value.length;
+            return (!document.querySelector(selector)) ?
+                0 : (5 -  document.querySelector(selector).querySelectorAll('.gray').length);
         }, selector);
 
         return note;
