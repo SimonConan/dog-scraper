@@ -169,6 +169,6 @@ const breedSchema = mongoose.Schema({
 });
 
 // To be sure that the document is unique is the DB
-breedSchema.plugin(uniqueValidator);
+breedSchema.plugin(uniqueValidator, { message: '{PATH} must be unique' });
 
 module.exports = mongoose.model('Breed', breedSchema);
