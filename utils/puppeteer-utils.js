@@ -7,7 +7,7 @@ async function getBreedLinks(page) {
         const breedLinks = await page.evaluate((selector) => {
             const breedNodeList = document.querySelectorAll(selector);
             const breeds = [...breedNodeList];
-            return breeds.map(link => link.href, );
+            return breeds.map(link => link.href);
         }, '#all > div.racesList > div > a');
 
         return breedLinks;
@@ -23,9 +23,8 @@ async function getBreedLinks(page) {
  */
 async function getTextContent(page, selector) {
     try {
-        let text = await page.evaluate((selector) => {
-            let content = document.querySelector(selector);
-            return content.textContent;
+        const text = await page.evaluate((selector) => {
+            return document.querySelector(selector).textContent;
         }, selector);
 
         return text.trim();
@@ -42,8 +41,8 @@ async function getTextContent(page, selector) {
 async function getTextAsNumber(page, selector) {
     try {
         let content = await page.evaluate((selector) => {
-            let value = document.querySelector(selector);
-            return (!value) ? value = -1 : value.textContent;
+            return (!document.querySelector(selector)) ? 
+            -1 : document.querySelector(selector).textContent;
         }, selector);
 
         return (content === 'NC') ? content = -1 : content = parseInt(content);
@@ -59,8 +58,7 @@ async function getTextAsNumber(page, selector) {
 async function getBreedImg(page) {
     try {
         const breedImg = await page.evaluate((selector) => {
-            let img = document.querySelector(selector);
-            return img.src;
+            return document.querySelector(selector).src;
         }, '#hab > div > div.row.parent > div.col-md-8.col-md-8-c > article > div > div.col-md-5.col-sm-5.np > div > picture > img');
 
         return breedImg;
