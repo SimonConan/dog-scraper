@@ -86,10 +86,30 @@ async function getNote(page, selector) {
     }
 }
 
+/**
+ * Get the inverse note (negative becomes positive) based on a CSS selector via puppeeter
+ * @param {object} page - The current puppeteer page
+ * @param {string} selector - CSS selector defined in .env file
+ */
+async function getInverseNote(page, selector) {
+    try {
+        const note = await page.evaluate((selector) => {
+            // We get all the gray note and we substract it to the MAX
+            return (!document.querySelector(selector)) ?
+                0 : document.querySelector(selector).querySelectorAll('.gray').length;
+        }, selector);
+
+        return note;
+    } catch (error) {
+        throw new Error("Error when getting inverse note\nSelector: " + selector + "\n" + error);
+    }
+}
+
 module.exports = {
     getBreedLinks,
     getTextContent,
     getTextAsNumber,
     getBreedImg,
-    getNote
+    getNote,
+    getInverseNote
 };
